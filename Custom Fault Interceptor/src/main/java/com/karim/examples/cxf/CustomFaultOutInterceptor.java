@@ -18,7 +18,6 @@ public class CustomFaultOutInterceptor extends FaultOutInterceptor {
 		Throwable callingServiceException = message.getContent(Exception.class);
 
 		// Override the fault body if thrown exception not from type MyFaultException
-		MyFaultException newException = null;
 		if (callingServiceException.getCause() == null || !(callingServiceException.getCause() instanceof MyFaultException)) {
 			//Get the actual exception
 			while(callingServiceException.getCause() != null) { 
@@ -26,32 +25,32 @@ public class CustomFaultOutInterceptor extends FaultOutInterceptor {
 			}
 			
 			// Construct the return Fault
-			newException = new MyFaultException(callingServiceException.getMessage(), callingServiceException);
+			MyFaultException newException = new MyFaultException(callingServiceException.getMessage(), callingServiceException);
 			Fault newfault = new Fault(newException);
 			
 			// Build Fault Message Detail Manually
-  	      	Document newDoc = DOMUtils.createDocument();
-  	      	Element exceptionDetail = newDoc.createElement("detail");
+			Document newDoc = DOMUtils.createDocument();
+			Element exceptionDetail = newDoc.createElement("detail");
   	      		
-  	      	Element myFaultNode = newDoc.createElement(newException.getClass().getSimpleName());
-  	      	exceptionDetail.appendChild(myFaultNode);
+			Element myFaultNode = newDoc.createElement(newException.getClass().getSimpleName());
+			exceptionDetail.appendChild(myFaultNode);
   	      	
-  	      	Element faultTypeBeanNode = newDoc.createElement("ErrorType");
-  	      	faultTypeBeanNode.setTextContent("INTERNAL_SERVER_ERROR");
-  	      	Element faultCodeBeanNode = newDoc.createElement("ErrorCode");
-  	      	faultCodeBeanNode.setTextContent("510");
-  	      	Element faultMessageBeanNode = newDoc.createElement("ErrorMessage");
-  	      	faultMessageBeanNode.setTextContent(callingServiceException.getMessage());
+			Element faultTypeBeanNode = newDoc.createElement("ErrorType");
+			faultTypeBeanNode.setTextContent("INTERNAL_SERVER_ERROR");
+			Element faultCodeBeanNode = newDoc.createElement("ErrorCode");
+			faultCodeBeanNode.setTextContent("510");
+			Element faultMessageBeanNode = newDoc.createElement("ErrorMessage");
+			faultMessageBeanNode.setTextContent(callingServiceException.getMessage());
   	      	
-	  	    myFaultNode.appendChild(faultTypeBeanNode);
-	  	    myFaultNode.appendChild(faultCodeBeanNode);
-	  	    myFaultNode.appendChild(faultMessageBeanNode);
+			myFaultNode.appendChild(faultTypeBeanNode);
+			myFaultNode.appendChild(faultCodeBeanNode);
+			myFaultNode.appendChild(faultMessageBeanNode);
   	    
 	  	      
-	  	    // Set the fault detail
-	        newfault.setDetail(exceptionDetail);
+			// Set the fault detail
+			newfault.setDetail(exceptionDetail);
 		    
-	        // Overwrite old exception
+			// Overwrite old exception
 			message.setContent(Exception.class, newfault);
 		}
 	}
