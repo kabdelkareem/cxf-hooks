@@ -17,9 +17,6 @@
 		<!-- CXF Dependences -->
 		<cxf.version>3.2.2</cxf.version>
 		
-		<!-- slf4j & Log4j -->
-		<slf4j.version>1.6.6</slf4j.version>
-		
 		<junit.version>4.12</junit.version>
 	</properties>
 
