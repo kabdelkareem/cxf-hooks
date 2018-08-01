@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.karim.examples.cxf</groupId>
+  <artifactId>custom-fault</artifactId>
+  <version>1.0.0</version>
+  <name>Custom Fault Interceptor</name>
+  <description>Custom Fault Interceptor</description>
+  
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<compile.java>1.8</compile.java>
+		
+		<!-- Plugins -->
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		
+		<!-- CXF Dependences -->
+		<cxf.version>3.2.2</cxf.version>
+		
+		<!-- slf4j & Log4j -->
+		<slf4j.version>1.6.6</slf4j.version>
+		
+		<junit.version>4.12</junit.version>
+	</properties>
+
+	<dependencies>
+		<!-- CXF Dependences -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		    <version>${junit.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${compile.java}</source>
+					<target>${compile.java}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
