@@ -1,6 +1,6 @@
 
 # Custom Fault Interceptor
-The best practice of using web services that they must return a predictable response even if it is an exception. This project is a showcase to how to overwrite the thrown exception to a predefined custom exception using CXF interceptors. 
+The best practice of using a web service that it must always return a predictable response even if it is an exception. This project is a showcase to how to overwrite the thrown exception to a predefined custom fault exception using a CXF interceptor. 
 
 
 ### Project Dependences
@@ -14,7 +14,7 @@ The best practice of using web services that they must return a predictable resp
 
 
 ### Project Constraints
-`CustomFaultOutInterceptor.java` must be registered as outFaultInterceptor of the web service
+`CustomFaultOutInterceptor.java` must be registered as an outFaultInterceptor of the web service
 
 
 ### Custom Fault Pseudocode
