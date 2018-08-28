@@ -13,7 +13,7 @@ import org.apache.cxf.message.ExchangeImpl;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.message.MessageImpl;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.karim.examples.cxf.CustomFaultOutInterceptor;
@@ -23,7 +23,8 @@ public class CustomFaultOutInterceptorTest extends Assert  {
 	private CustomFaultOutInterceptor customFaultOutInterceptor;
 	
 
-	@Before public void initialize() {
+	@BeforeClass
+	public void initialize() {
         customFaultOutInterceptor = new CustomFaultOutInterceptor();
 	}
 	
