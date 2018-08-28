@@ -1,4 +1,4 @@
-# cxf-hooks
+# CXF Hooks
 Some CXF Workarounds Projects
 
 ## Projects
