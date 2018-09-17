@@ -1,4 +1,4 @@
-package com.karim.examples.cxf.test.groovy;
+package com.karim.examples.cxf.test.groovy
 
 import spock.lang.Specification
 import spock.lang.Shared
@@ -7,7 +7,7 @@ import org.apache.cxf.message.MessageImpl
 import com.karim.examples.cxf.CustomFaultOutInterceptor
 import com.karim.examples.cxf.exceptions.MyFaultException
 
-class BasicTest extends Specification {
+class CustomFaultInterceptorTest extends Specification {
 	@Shared 
 	def customFaultOutInterceptor = new CustomFaultOutInterceptor()
 
